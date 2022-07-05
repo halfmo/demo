@@ -6,10 +6,15 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
     username: root
     password: 1391643993
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
-
+logging:
+  level:
+    com:
+      example:
+        demo:
+          dao: debug

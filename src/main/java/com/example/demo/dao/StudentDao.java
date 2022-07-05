@@ -1,7 +1,8 @@
 package com.example.demo.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+
+import com.example.demo.entity.Student;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,14 @@ import java.util.Map;
 public interface StudentDao {
 
   @Select("SELECT * FROM mystudent")
-  List<Map> selectAll();
+  public List<Map> selectAll();
+
+  @Insert("INSERT INTO mystudent VALUES (#{code},#{name},#{age},#{birthday})")
+  public Integer insert(Student student);
+
+  @Update("UPDATE mystudent SET name=#{name}, age=#{age}, birthday=#{birthday} WHERE code=#{code} ")
+  public Integer update(Student student);
+
+  @Delete("DELETE FROM mystudent WHERE code=#{code}")
+  public Integer delete(@Param("code") String id);
 }

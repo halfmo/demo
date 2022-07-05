@@ -40,13 +40,13 @@ public class StudentApi {
   3-5：insert、update、delete
    */
 
-//  @Autowired
-//  private StudentDao dao;
-//
-//  @GetMapping("queryall")
-//  public List<Map> queryAll(){
-//    return dao.selectAll();
-//  }
+  @Autowired
+  private StudentDao dao;
+
+  @GetMapping("queryall")
+  public List<Map> queryAll(){
+    return dao.selectAll();
+  }
 
 
   /**
