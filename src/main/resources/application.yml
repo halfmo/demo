@@ -18,3 +18,11 @@ logging:
       example:
         demo:
           dao: debug
+
+mybatis:
+  mapper-locations:
+    - mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+  configuration:
+    map-underscore-to-camel-case: true
+

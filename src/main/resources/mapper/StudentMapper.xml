@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.StudentMapper" >
+
+
+    <select id="selectAll" resultType="java.util.Map" >
+        SELECT
+            *
+        FROM
+            mystudent
+    </select>
+
+    <select id="selectAll1" resultType="Student" >
+        SELECT
+            *
+        FROM
+            mystudent
+    </select>
+
+    <select id="selectAll2" resultType="Student" >
+        SELECT
+            code as my_code,
+            name as my_name,
+            age as my_age,
+            birthday as my_birthday
+        FROM
+            mystudent
+    </select>
+    <select id="selectAll3" resultType="Student1" >
+        SELECT
+            code as my_code,
+            name as my_name,
+            age as my_age,
+            birthday as my_birthday
+        FROM
+            mystudent
+    </select>
+
+    <resultMap id="studentMap" type="Student">
+        <id column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="birthday" property="birthday"/>
+    </resultMap>
+    <select id="selectByCondition" resultMap="studentMap" >
+        SELECT
+            code,
+            name,
+            age ,
+            birthday
+        FROM
+            mystudent
+        <where>
+        <if test="name != null and name !=''">
+        AND code = #{name}
+        </if>
+        <if test="age != null">
+        AND age = #{age}
+        </if>
+        <if test="birthday != null">
+        AND birthday = #{birthday}
+        </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Student">
+        INSERT INTO mystudent
+        VALUES (#{code},#{name},#{age},#{birthday})
+    </insert>
+    
+    <delete id="delete">
+        DELETE FROM mystudent WHERE code=#{code}
+    </delete>
+</mapper>

@@ -25,11 +25,14 @@ class StudentDaoTest {
   @Autowired
   StudentDao dao;
 
+
   @Test
   void selectAll() {
     List<Map> list = dao.selectAll();
     System.out.println(list);
   }
+
+
 
   @Test
   public void insertTest() {
